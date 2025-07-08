@@ -29,9 +29,8 @@ body {
     gap: 10px;
     background-color: #f2c399;
     padding: 10px;
-    width: 80%;
+    width: 100%;
     height: 80vh;
-    border-radius: 10px;
 }
 
 .sidebar {
@@ -42,6 +41,13 @@ body {
     flex-direction: column;
 }
 
+.middle-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  grid-row: 1 / span 2;
+}
 
 .main {
     position: relative;
@@ -51,43 +57,50 @@ body {
     width: 100vw;
 }
 
-.footer {
+.image-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.achievements-bar {
     background-color: #e53935;
     color: white;
     text-align: center;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-}
-
-.footer.collapsed {
-    max-height: 40px;
-}
-
-.footer:not(.collapsed) {
-    max-height: 200px;
-}
-
-.footer-header {
-    padding: 10px;
-}
-
-.footer-content {
+    width: 100%;
     padding: 10px;
 }
 
 .widgets {
+    grid-row: 1 / span 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100%;
 }
 
 .widget {
     background-color: #ffe0c4;
     border-radius: 10px;
-    height: 45%;
+    height: 100%;
+    flex: 1;
+    margin-bottom: 10px;
+}
+
+.calendar-widget {
+
+    background-color: #ffe0c4;
+}
+
+
+.pomodoro-widget {
+
+    background-color: #ffe0c4;
 }
 
 .header {

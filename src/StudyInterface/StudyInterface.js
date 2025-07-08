@@ -27,11 +27,11 @@ const StudyTracker = () => {
 
                 <div className="widgets">
 
-                <div class="widget">
+                <div class="widget calendar-widget">
                     <div class="header">Calendar</div>
                 </div>
 
-                <div class="widget">
+                <div class="widget pomodoro-widget">
                     <div class="header">Pomodoro</div>
                 </div>
                 
