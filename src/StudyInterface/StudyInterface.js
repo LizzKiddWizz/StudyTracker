@@ -5,6 +5,12 @@ import "../Home/Home.css";
 import "./StudyInterface.css";
 
 const StudyTracker = () => {
+
+    const [showAchievements, setShowAchievements] = useState(false);
+
+    const toggleAchievements = () => {
+        setShowAchievements((prev) => !prev);
+    };
     
     return (
 
@@ -20,9 +26,16 @@ const StudyTracker = () => {
                     <div className="image-container">
                         {/* You can insert an image later here */}
                     </div>
-                    <div className="achievements-bar">
+                    <div className="achievements-bar" onClick={toggleAchievements}>
                         Achievements + Statistics
                     </div>
+                    {showAchievements && (
+                        <div className="achievements-content">
+                        {/* Replace this with actual content */}
+                        <p>⭐ You completed 3 Pomodoros today!</p>
+                        <p>📈 Your focus time increased by 12%</p>
+                        </div>
+                    )}
                 </div>    
 
                 <div className="widgets">
