@@ -1,33 +1,35 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import axios from '../api/axios'
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import './SignIn.css';
 
-function SignIn() {    
+function SignIn() {
+  const [email, setEmail] = useState()
+  const [pwd, setPassword] = useState()
+  const navigate = useNavigate()
 
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-    const navigate = useNavigate()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const signInRes = await axios.post("/auth", { email, pwd });
+      if (signInRes.status === 200) {
+        const roles = signInRes.data.roles;
+        if (roles && roles.Admin) {
+          navigate("/admin");
+        } else {
+          navigate("/study");
+          await axios.get("/courses")
+        }
+      } else {
+        navigate("/register");
+        alert("You are not registered to this service");
+      }
+    } catch { console.log(e) }
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        axios.post("http://localhost:3001/signin", { email, password })
-        .then(result => {
-            console.log(result)
-            if(result.data === "Success"){
-                navigate("/home")
-            }else{
-                navigate("/register")
-                alert("You are not registered to this service")
-
-            }
-       
-        })
-        .catch(err => console.log(err))
-    }
 
 
   return (
@@ -65,7 +67,7 @@ function SignIn() {
           </form>
           <p className="mt-3">Don't have an account?</p>
           <Link to="/register" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
-            Sign Up
+            Register
           </Link>
         </div>
       </div>

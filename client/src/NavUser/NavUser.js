@@ -1,8 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import "./Navbar.css";
+import { useState } from "react";
+import axios from '../api/axios'
+import "./NavUser.css";
 
-const Navbar = () => {
+const NavUser = () => {
+  const cookie = useState();
   const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    try {
+      await axios.get("/logout", cookie)
+    } catch { console.log(e) }
+  }
 
   return (
     <div className="header-container">
@@ -17,40 +26,33 @@ const Navbar = () => {
 
       {/* Container for Home and Team options */}
       <div className="nav-options">
+
         <div
           className="header-option-container"
           onClick={() => {
+            navigate(`/study`);
+          }}
+        >
+          <div className="header-option-text">Study</div>
+        </div>
+
+        <div
+          className="header-option-container"
+          onClick={() => {
+            navigate(`/pomodoro`);
+          }}
+        >
+          <div className="header-option-text">Pomodoro</div>
+        </div>
+
+        <div
+          className="header-option-container"
+          onClick={() => {
+            handleSubmit()
             navigate(`/`);
           }}
         >
-          <div className="header-option-text">Home</div>
-        </div>
-
-        <div
-          className="header-option-container"
-          onClick={() => {
-            navigate(`/team`);
-          }}
-        >
-          <div className="header-option-text">Team</div>
-        </div>
-
-        <div
-          className="header-option-container"
-          onClick={() => {
-            navigate(`/signin`);
-          }}
-        >
-          <div className="header-option-text">Sign In</div>
-        </div>
-
-        <div
-          className="header-option-container"
-          onClick={() => {
-            navigate(`/studytracker`);
-          }}
-        >
-          <div className="header-option-text">Study Tracker</div>
+          <div className="header-option-text">Log Out</div>
         </div>
 
       </div>
@@ -58,4 +60,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavUser;
