@@ -43,19 +43,6 @@ const Navbar = () => {
         >
           <div className="header-option-text">Sign In</div>
         </div>
-<<<<<<< HEAD:src/Navbar/Navbar.js
-
-        <div
-          className="header-option-container"
-          onClick={() => {
-            navigate(`/studytracker`);
-          }}
-        >
-          <div className="header-option-text">Study Tracker</div>
-        </div>
-
-=======
->>>>>>> a1b5ffac5f3e89699ff75ccd76183f43d1e81591:client/src/Navbar/Navbar.js
       </div>
     </div>
   );
