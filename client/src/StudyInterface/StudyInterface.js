@@ -62,16 +62,16 @@ const StudyTracker = () => {
     }, []);
 
     useEffect(() => {
-    const today = new Date().toISOString().split("T")[0]; // 'YYYY-MM-DD'
-    const usedDays = JSON.parse(localStorage.getItem("usedDays") || "[]");
+        const today = new Date().toISOString().split("T")[0]; // 'YYYY-MM-DD'
+        const usedDays = JSON.parse(localStorage.getItem("usedDays") || "[]");
 
-    if (!usedDays.includes(today)) {
-      usedDays.push(today);
-      localStorage.setItem("usedDays", JSON.stringify(usedDays));
-    }
+        if (!usedDays.includes(today)) {
+            usedDays.push(today);
+            localStorage.setItem("usedDays", JSON.stringify(usedDays));
+        }
 
-    setUsedDaysCount(usedDays.length);
-  }, []);
+        setUsedDaysCount(usedDays.length);
+    }, []);
 
     const handleSubmitCourse = (e) => {
         e.preventDefault();
@@ -511,7 +511,7 @@ const StudyTracker = () => {
                                                             ${task.completed ? "completed" : ""} 
                                                             ${showOnlyUrgent && task.priority !== "urgent" ? "blur-task" : ""} 
                                                             ${earlyCompleteAnimTask?.folderId === folder.id && earlyCompleteAnimTask?.taskIndex === index ? "task-early-complete-anim" : ""}
-                                                          `}                                                          
+                                                          `}
                                                         draggable
                                                         onDragStart={() => setDraggedTaskInfo({ folderId: folder.id, taskIndex: index })}
                                                         onDragOver={(e) => e.preventDefault()}
